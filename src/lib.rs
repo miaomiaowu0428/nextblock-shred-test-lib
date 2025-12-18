@@ -79,7 +79,7 @@ fn get_domain() -> Result<String> {
     }
 }
 
-async fn nextblock_shres_monitor() -> Result<()> {
+pub async fn nextblock_shred_monitor() -> Result<()> {
     let domain = get_domain()?;
     let private_key_b58 = "YOUR_PRIVATE_KEY";
     if private_key_b58.is_empty() {
