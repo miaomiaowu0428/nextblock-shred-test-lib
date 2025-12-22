@@ -10,7 +10,7 @@ use solana_sdk::{
     pubkey::Pubkey, signature::Keypair, signer::Signer, transaction::VersionedTransaction,
 };
 
-use anyhow::{Context, Result, bail};
+use anyhow::{Context, Result};
 use tonic::{
     Request,
     transport::{Channel, Endpoint},
