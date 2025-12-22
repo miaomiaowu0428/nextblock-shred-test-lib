@@ -94,6 +94,7 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
 
     let authentication_keypair = Keypair::from_base58_string(private_key_b58);
     let authentication_pubkey = authentication_keypair.pubkey();
+    println!("pubkey: {authentication_pubkey}");
 
     let authentication_message = build_auth_message(&domain, &authentication_pubkey);
     let authentication_signature =
