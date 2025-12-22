@@ -109,6 +109,7 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
         authentication_signature: authentication_signature.to_string(),
         accounts: vec![],
     };
+    println!("pubkey: {authentication_pubkey}");
 
     let mut stream = client
         .subscribe_next_stream(Request::new(req))
