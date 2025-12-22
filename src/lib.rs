@@ -1,5 +1,5 @@
 pub mod protos {
-    pub mod nextblock_stream;
+    pub mod stream;
 }
 
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
@@ -16,7 +16,7 @@ use tonic::{
     transport::{Channel, Endpoint},
 };
 
-use crate::protos::nextblock_stream::{
+use crate::protos::stream::{
     NextStreamSubscription, next_stream_service_client::NextStreamServiceClient,
 };
 

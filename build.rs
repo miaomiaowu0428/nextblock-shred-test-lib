@@ -6,12 +6,12 @@ fn main() {
 
     // 2. 直接定位到 proto 子目录下的 stream.proto（核心修改点）
     // 路径：~/solana/strategy/pumpswap-snipe/proto/stream.proto
-    let proto_file = manifest_dir.join("proto").join("next_block_stream.proto");
+    let proto_file = manifest_dir.join("proto").join("stream.proto");
 
     // 3. 检查 proto 文件是否存在（友好报错）
     if !proto_file.exists() {
         panic!(
-            "Proto 文件未找到：{}，请确认文件路径为 proto/next_block_stream.proto",
+            "Proto 文件未找到：{}，请确认文件路径为 proto/stream.proto",
             proto_file.display()
         );
     }
