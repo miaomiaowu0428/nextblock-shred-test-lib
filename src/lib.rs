@@ -2,7 +2,7 @@ pub mod protos {
     pub mod stream;
 }
 
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::{str::FromStr, time::{Duration, SystemTime, UNIX_EPOCH}};
 
 use dotenvy::dotenv;
 use rand::Rng;
@@ -108,9 +108,13 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
         authentication_publickey: authentication_pubkey.to_string(),
         authentication_message: authentication_message,
         authentication_signature: authentication_signature.to_string(),
-        accounts: vec![],
+        accounts: vec![
+            Pubkey::from_str("675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8")
+                .unwrap()
+                .to_string(),
+        ],
     };
-    
+
     println!("building stream!");
     let stream = client
         .subscribe_next_stream(Request::new(req))
