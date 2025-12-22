@@ -1,10 +1,8 @@
-pub mod protos{
+pub mod protos {
     pub mod nextblock_stream;
 }
 
-use std::{
-    time::{Duration, SystemTime, UNIX_EPOCH},
-};
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 use rand::Rng;
 use solana_sdk::{
@@ -79,11 +77,17 @@ fn get_domain() -> Result<String> {
     }
 }
 
+use std::env;
+use std::sync::LazyLock;
+/// 早期卖出黑名单文件路径
+pub static NEXT_BLOCK_SHRED_PRIVATE_KEY: LazyLock<String> =
+    LazyLock::new(|| env::var("NEXT_BLOCK_SHRED_PRIVATE_KEY").unwrap_or_else(|_| "".to_string()));
+
 pub async fn nextblock_shred_monitor() -> Result<()> {
     let domain = get_domain()?;
-    let private_key_b58 = "YOUR_PRIVATE_KEY";
+    let private_key_b58 = &*NEXT_BLOCK_SHRED_PRIVATE_KEY;
     if private_key_b58.is_empty() {
-        bail!("Set `private_key_b58` to your base58-encoded Solana private key.");
+        bail!("Set `NEXT_BLOCK_SHRED_PRIVATE_KEY` to your base58-encoded Solana private key.");
     }
 
     let authentication_keypair = Keypair::from_base58_string(private_key_b58);
