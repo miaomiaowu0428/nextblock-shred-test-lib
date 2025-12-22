@@ -4,6 +4,7 @@ pub mod protos {
 
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+use dotenvy::dotenv;
 use rand::Rng;
 use solana_sdk::{
     pubkey::Pubkey, signature::Keypair, signer::Signer, transaction::VersionedTransaction,
@@ -84,6 +85,7 @@ pub static NEXT_BLOCK_SHRED_PRIVATE_KEY: LazyLock<String> =
     LazyLock::new(|| env::var("NEXT_BLOCK_SHRED_PRIVATE_KEY").unwrap_or_else(|_| "".to_string()));
 
 pub async fn nextblock_shred_monitor() -> Result<()> {
+    dotenv().ok();
     let domain = get_domain()?;
     let private_key_b58 = &*NEXT_BLOCK_SHRED_PRIVATE_KEY;
     if private_key_b58.is_empty() {
