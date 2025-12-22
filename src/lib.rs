@@ -111,11 +111,12 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
     };
     println!("building stream!");
 
-    let mut stream = client
+    let stream = client
         .subscribe_next_stream(Request::new(req))
-        .await?
-        .into_inner();
+        .await
+        .map(|s| s.into_inner());
     println!("stream build! {stream:#?}");
+    let mut stream = stream?;
 
     while let Some(msg) = stream.message().await.context("recv")? {
         if let Some(packet) = msg.packet {
