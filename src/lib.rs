@@ -87,6 +87,7 @@ pub static NEXT_BLOCK_SHRED_PRIVATE_KEY: LazyLock<String> =
 pub async fn nextblock_shred_monitor() -> Result<()> {
     dotenv().ok();
     let domain = get_domain()?;
+    println!("domain: {domain}");
     let private_key_b58 = &*NEXT_BLOCK_SHRED_PRIVATE_KEY;
     if private_key_b58.is_empty() {
         panic!("Set `NEXT_BLOCK_SHRED_PRIVATE_KEY` to your base58-encoded Solana private key.");
