@@ -114,6 +114,7 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
         .subscribe_next_stream(Request::new(req))
         .await?
         .into_inner();
+    println!("pubkey: {authentication_pubkey}");
 
     while let Some(msg) = stream.message().await.context("recv")? {
         if let Some(packet) = msg.packet {
