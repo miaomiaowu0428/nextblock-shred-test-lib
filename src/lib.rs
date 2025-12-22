@@ -65,7 +65,7 @@ async fn make_insecure_channel(domain: &str) -> Result<Channel> {
 
 fn get_domain() -> Result<String> {
     match *REGION {
-        Region::NewYork => Ok("nyc.stream.nextblock.io:22221".to_string()),
+        Region::NewYork => Ok("nyc.stream.nextblock.io".to_string()),
         Region::Frankfurt => Ok("fra.stream.nextblock.io:22221".to_string()),
         Region::Amsterdam => Ok("amsterdam.stream.nextblock.io:22221".to_string()),
         Region::London => Ok("london.stream.nextblock.io:22221".to_string()),
