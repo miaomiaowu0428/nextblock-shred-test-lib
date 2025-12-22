@@ -115,7 +115,7 @@ pub async fn nextblock_shred_monitor() -> Result<()> {
         .subscribe_next_stream(Request::new(req))
         .await?
         .into_inner();
-    println!("stream build!");
+    println!("stream build! {stream:#?}");
 
     while let Some(msg) = stream.message().await.context("recv")? {
         if let Some(packet) = msg.packet {
