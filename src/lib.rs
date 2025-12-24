@@ -15,11 +15,11 @@ use solana_sdk::{pubkey, transaction::VersionedTransaction};
 
 fn get_domain() -> String {
     match *REGION {
+        Region::Frankfurt => "http://fra1.beta.tempo.temporal.xyz:50051".to_string(),
         Region::NewYork => "https://ewr1.beta.tempo.temporal.xyz:50051".to_string(),
-        Region::Frankfurt => "https://fra1.beta.tempo.temporal.xyz:50051".to_string(),
         Region::Amsterdam => "https://ams1.beta.tempo.temporal.xyz:50051".to_string(),
         Region::London => "https://lon1.beta.tempo.temporal.xyz:50051".to_string(),
-        _ => "https://fra1.beta.tempo.temporal.xyz:50051".to_string(),
+        _ => "http://fra1.beta.tempo.temporal.xyz:50051".to_string(),
     }
 }
 
