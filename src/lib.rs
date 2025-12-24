@@ -26,6 +26,8 @@ fn get_domain() -> String {
 pub async fn tempo_shred_monitor() {
     // Connect to endpoint
     let endpoint = get_domain();
+    println!("Region: {:?}",*REGION);
+    println!("endpoint: {}",endpoint);
 
     let mut client = TransactionStreamClient::connect(endpoint)
         .await
